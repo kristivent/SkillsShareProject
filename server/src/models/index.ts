@@ -11,7 +11,7 @@ const User = UserFactory(sequelize);
 const Skill = SkillFactory(sequelize);
 const SkillMap = SkillMapFactory(sequelize);
 
-User.hasMany(SkillMap, { foreignKey: 'skillid' });
-SkillMap.belongsTo(User, { foreignKey: 'skillid' });
+User.belongsToMany(Skill, { foreignKey: 'userid' ,through: SkillMap});
+Skill.belongsToMany(User, { foreignKey: 'skillid', through: SkillMap});
 
 export { User, Skill, SkillMap };
