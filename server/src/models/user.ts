@@ -14,7 +14,7 @@ interface UserAttributes {
 interface UserCreationAttributes extends Optional<UserAttributes,'userid' | 'github' | 'city' | 'skillbuddy'> {}
 
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-  public id!: number;
+  public userid!: number;
   public username!: string;
   public password!: string;
   public email!: string;
@@ -35,7 +35,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
 export function UserFactory(sequelize: Sequelize): typeof User {
   User.init(
     {
-      id: {
+      userid: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
@@ -81,3 +81,4 @@ export function UserFactory(sequelize: Sequelize): typeof User {
 
   return User;
 }
+
