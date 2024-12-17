@@ -1,10 +1,10 @@
 
 import React, { useEffect, useState } from 'react';
-import { User } from '../interfaces/User';
+import { UserData, User } from '../interfaces/UserData';
 import { GitHubProfile } from '../interfaces/GitHubProfile';
-import { Book } from '../interfaces/Book';
+import { Book } from '../interfaces/Book'; // Ensure this path is correct
 
-const Results: React.FC = () => {
+const Results = () => {
     const [user, setUser] = useState<User | null>(null);
     const [githubProfile, setGitHubProfile] = useState<GitHubProfile | null>(null);
     const [books, setBooks] = useState<Book[]>([]);
@@ -28,7 +28,7 @@ const Results: React.FC = () => {
         fetch('https://www.googleapis.com/books/v1/volumes?q=subject:programming')
             .then((response) => response.json())
             .then((data) => {
-                const booksData = data.items.map((item: any) => ({
+                const booksData = data.items.map((item) => ({
                     title: item.volumeInfo.title,
                     authors: item.volumeInfo.authors,
                     infoLink: item.volumeInfo.infoLink,
