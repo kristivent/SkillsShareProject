@@ -5,7 +5,7 @@ import { UserFactory } from './user.js';
 import { SkillFactory } from './skills.js';
 import {SkillMapFactory} from './skillmap.js';
 
-import sequelize from '../config/connection.ts;
+import sequelize from '../config/connection.js';
  
 const User = UserFactory(sequelize);
 const Skill = SkillFactory(sequelize);
