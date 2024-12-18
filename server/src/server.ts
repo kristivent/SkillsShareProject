@@ -4,8 +4,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
-import routes from './routes/index';
-import sequelize from '..//src/config/connection';
+import routes from './routes/index.js';
+import sequelize from './config/connection.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
