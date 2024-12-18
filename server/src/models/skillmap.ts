@@ -1,6 +1,8 @@
 import { DataTypes, Sequelize, Model, Optional, ForeignKey } from 'sequelize';
 import { User } from './user';
+
 import { Skill } from './skills';
+
 
 interface SkillMapAttributes {
   skillnumber: number;  

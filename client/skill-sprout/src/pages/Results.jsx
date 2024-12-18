@@ -69,35 +69,4 @@ const Results = () => {
 
 export default Results;
 
-/* Need to add some variation of this to Home.tsx to connect Google Books results:
-
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-
-const Home: React.FC = () => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const history = useHistory();
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    history.push(`/results?query=${searchQuery}`);
-  };
-
-  return (
-    <div>
-      <h1>Home Page</h1>
-      <form onSubmit={handleSearch}>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search for books"
-        />
-        <button type="submit">Search</button>
-      </form>
-    </div>
-  );
-};
-
-export default Home; */
 
