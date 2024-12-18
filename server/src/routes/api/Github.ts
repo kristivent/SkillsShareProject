@@ -1,17 +1,16 @@
-import express from 'express';
-import axios from 'axios';
+import fetch from 'node-fetch';
 
-const router = express.Router();
-
-router.get('/github/:username', async (req, res) => {
-    const { username } = req.params;
-
+const fetchGithubData = async (username: string) => {
     try {
-        const userResponse = await axios.get(`https://api.github.com/users/${username}`);
-        const reposResponse = await axios.get(`https://api.github.com/users/${username}/repos`);
+        const userResponse = await fetch(`https://api.github.com/users/${username}`);
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos`);
 
-        const userData = userResponse.data;
-        const reposData = reposResponse.data;
+        if (!userResponse.ok || !reposResponse.ok) {
+            throw new Error("Invalid API response, check the network tab");
+        }
+
+        const userData = await userResponse.json();
+        const reposData = await reposResponse.json();
 
         const result = {
             username: userData.login,
@@ -19,10 +18,11 @@ router.get('/github/:username', async (req, res) => {
             repos: reposData.map((repo: any) => repo.name)
         };
 
-        res.json(result);
+        return result;
     } catch (error) {
-        res.status(500).json({ error: 'Error fetching data from GitHub' });
+        console.error("Error fetching data from GitHub:", error);
+        return {};
     }
-});
+};
 
-export default router;
+export { fetchGithubData };
