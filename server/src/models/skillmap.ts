@@ -1,6 +1,6 @@
 import { DataTypes, Sequelize, Model, Optional, ForeignKey } from 'sequelize';
 import { User } from './user';
-import { skill } from './skill';
+import { Skill } from './skills';
 
 interface SkillMapAttributes {
   skillnumber: number;  
@@ -13,7 +13,7 @@ interface SkillMapCreationAttributes extends Optional<SkillMapAttributes,'skilln
 
 export class SkillMap extends Model<SkillMapAttributes, SkillMapCreationAttributes> implements SkillMapAttributes {
   public skillnumber!: number;
-  public skillid!: ForeignKey<skill['skillid']>;
+  public skillid!: ForeignKey<Skill['skillid']>;
   public userid!: ForeignKey<User['userid']>;
   public skilllevel!: string;
 
