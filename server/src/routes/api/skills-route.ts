@@ -4,7 +4,7 @@ import {
   getUserById,
   getSkillLevel,
     getAllSkillsMap,
-} from '../../controller/skills-map-controller';
+} from '../../controller/skills-map-controller.js';
 
 const router = express.Router();
 
