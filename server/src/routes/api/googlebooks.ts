@@ -4,8 +4,9 @@
 
 const searchGoogleBooks = async (subject: string) => {
     try {
+     
       const response = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${subject}&key=${process.env.API_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${subject}&key=${process.env.GOOGLE_BOOK_API_KEY}`
       );
   
       const data = await response.json();

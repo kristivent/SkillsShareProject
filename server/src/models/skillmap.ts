@@ -1,7 +1,8 @@
-import { DataTypes, Sequelize, Model, Optional, ForeignKey } from 'sequelize';
-import { User } from './user';
+import sequelize from '../config/connection.js';
+import { DataTypes, Model, Optional, ForeignKey } from 'sequelize';
+import User  from './user.js';
 
-import { Skill } from './skills';
+import  Skill  from './skills.js';
 
 
 interface SkillMapAttributes {
@@ -13,7 +14,7 @@ interface SkillMapAttributes {
 
 interface SkillMapCreationAttributes extends Optional<SkillMapAttributes,'skillnumber'> {}  
 
-export class SkillMap extends Model<SkillMapAttributes, SkillMapCreationAttributes> implements SkillMapAttributes {
+export default class SkillMap extends Model<SkillMapAttributes, SkillMapCreationAttributes> implements SkillMapAttributes {
   public skillnumber!: number;
   public skillid!: ForeignKey<Skill['skillid']>;
   public userid!: ForeignKey<User['userid']>;
@@ -23,7 +24,6 @@ export class SkillMap extends Model<SkillMapAttributes, SkillMapCreationAttribut
   public readonly updatedAt!: Date;
 }
 
-export function SkillMapFactory(sequelize: Sequelize): typeof SkillMap {
   SkillMap.init(
     {
       skillnumber: {
@@ -49,5 +49,4 @@ export function SkillMapFactory(sequelize: Sequelize): typeof SkillMap {
       tableName: 'skillmap',
     }
   );
-  return SkillMap;
-}
+  

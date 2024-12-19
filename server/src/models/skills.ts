@@ -1,4 +1,5 @@
-import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
+import sequelize from '../config/connection.js';
+import { DataTypes,  Model, Optional } from 'sequelize';
 
 interface SkillAttributes {
   skillid: number;
@@ -7,7 +8,7 @@ interface SkillAttributes {
 
 interface SkillCreationAttributes extends Optional<SkillAttributes, 'skillid'> {}
 
-export class Skill extends Model<SkillAttributes, SkillCreationAttributes> implements SkillAttributes {
+export default class Skill extends Model<SkillAttributes, SkillCreationAttributes> implements SkillAttributes {
   public skillid!: number;
   public skillname!: string;
 
@@ -15,7 +16,7 @@ export class Skill extends Model<SkillAttributes, SkillCreationAttributes> imple
   public readonly updatedAt!: Date;
 }
 
-export function SkillFactory(sequelize: Sequelize): typeof Skill {
+
   Skill.init(
     {
       skillid: {
@@ -33,5 +34,4 @@ export function SkillFactory(sequelize: Sequelize): typeof Skill {
       tableName: 'skill',
     }
   );
-  return Skill;
-}
+ 

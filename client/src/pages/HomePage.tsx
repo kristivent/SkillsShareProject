@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearchChange = (event) => {
+  const handleSearchChange = (event:ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setSearchTerm(event.target.value);
   };
 

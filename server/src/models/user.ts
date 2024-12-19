@@ -1,5 +1,6 @@
-import { DataTypes, Sequelize, Model, Optional } from 'sequelize';
-import bcrypt from 'bcrypt';
+import sequelize from '../config/connection.js';
+import { DataTypes, Model, Optional } from 'sequelize';
+//import bcrypt from 'bcrypt';
 
 interface UserAttributes {
   userid: number;
@@ -13,7 +14,7 @@ interface UserAttributes {
 
 interface UserCreationAttributes extends Optional<UserAttributes,'userid' | 'github' | 'city' | 'skillbuddy'> {}
 
-export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
+export default class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public userid!: number;
   public username!: string;
   public password!: string;
@@ -26,13 +27,13 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   public readonly updatedAt!: Date;
 
   // Hash the password before saving the user
-  public async setPassword(password: string) {
-    const saltRounds = 10;
-    this.password = await bcrypt.hash(password, saltRounds);
-  }
+  // public async setPassword(password: string) {
+  //   const saltRounds = 10;
+  //   this.password = await bcrypt.hash(password, saltRounds);
+  // }
 }
 
-export function UserFactory(sequelize: Sequelize): typeof User {
+//export function UserFactory(sequelize: Sequelize): typeof User {
   User.init(
     {
       userid: {
@@ -68,17 +69,17 @@ export function UserFactory(sequelize: Sequelize): typeof User {
     {
       tableName: 'users',
       sequelize,
-      hooks: {
-        beforeCreate: async (user: User) => {
-          await user.setPassword(user.password);
-        },
-        beforeUpdate: async (user: User) => {
-          await user.setPassword(user.password);
-        },
-      }
+      // hooks: {
+      //   beforeCreate: async (user: User) => {
+      //     await user.setPassword(user.password);
+      //   },
+      //   beforeUpdate: async (user: User) => {
+      //     await user.setPassword(user.password);
+      //   },
+      // }
     }
   );
 
-  return User;
-}
+//   return User;
+// }
 

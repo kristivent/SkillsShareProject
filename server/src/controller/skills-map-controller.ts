@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { SkillMap } from '../models/skillmap.js';
+import { SkillMap } from '../models/index.js';
 
 // GET skillid /skills-map
 export const getSkillById = async (req: Request, res: Response) => {
