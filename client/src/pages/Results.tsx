@@ -1,13 +1,14 @@
 
-import React, { useEffect, useState } from 'react';
-import { UserData, User } from '../interfaces/UserData';
-import { GitHubProfile } from '../interfaces/GitHubProfile';
+import { useEffect, useState } from 'react';
+import { UserData } from '../interfaces/UserData';
+import { User } from '../interfaces/UserData'; // Ensure this path is correct
+import Results from '../interfaces/Results'; // Ensure this path is correct
 import { Book } from '../interfaces/Book'; // Ensure this path is correct
 
 const Results = () => {
     const [user, setUser] = useState<User | null>(null);
     const [githubProfile, setGitHubProfile] = useState<GitHubProfile | null>(null);
-    const [books, setBooks] = useState([]);
+    const [books, setBooks] = useState<Book[]>([]);
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
@@ -28,7 +29,7 @@ const Results = () => {
         fetch('https://www.googleapis.com/books/v1/volumes?q=subject:programming')
             .then((response) => response.json())
             .then((data) => {
-                const booksData = data.items.map((item) => ({
+                const booksData: Book[] = data.items.map((item: any) => ({
                     title: item.volumeInfo.title,
                     authors: item.volumeInfo.authors,
                     infoLink: item.volumeInfo.infoLink,
