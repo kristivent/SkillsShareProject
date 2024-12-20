@@ -3,7 +3,9 @@ import { useState, ChangeEvent } from 'react';
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleSearchChange = (event:ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  interface SearchChangeEvent extends ChangeEvent<HTMLInputElement> {}
+
+  const handleSearchChange = (event: SearchChangeEvent) => {
     setSearchTerm(event.target.value);
   };
 
