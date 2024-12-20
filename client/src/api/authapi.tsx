@@ -9,9 +9,11 @@ const login = async (userInfo: UserLogin) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(userInfo),
+     
     });
-
+    console.log('User info:', userInfo)
     const data = await response.json();
+    console.log('Data from user login: ', data);
 
     if (!response.ok) {
       throw new Error('User information not retrieved, check network tab!');
@@ -23,7 +25,5 @@ const login = async (userInfo: UserLogin) => {
     return Promise.reject('Could not fetch user info');
   }
 }
-
-
 
 export { login };
