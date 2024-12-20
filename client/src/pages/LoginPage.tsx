@@ -27,9 +27,9 @@ const Login = () => {
     try {
       const data = await login(loginData);
       Auth.login(data.token);
-    } catch (err) {
+    } catch (err: any) {
       if (err) {
-        setError(err); // Display error from API response
+        setError(err.message || 'An error occurred'); // Display error from API response
         console.error('Failed to login all error', err);
         setError('Username or password is incorrect. Please try again.');
       } else {
