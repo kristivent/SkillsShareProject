@@ -7,7 +7,7 @@ import { Book } from '../interfaces/Book'; // Ensure this path is correct
 const Results = () => {
     const [user, setUser] = useState<User | null>(null);
     const [githubProfile, setGitHubProfile] = useState<GitHubProfile | null>(null);
-    const [books, setBooks] = useState<Book[]>([]);
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);

@@ -5,8 +5,8 @@ import './index.css'
 import './assets/styles/navbar.css'
 
 import App from './App.tsx'
- import HomePage from './pages/HomePage.tsx';
- import ErrorPage from './pages/ErrorPage.tsx';
+ import HomePage from './pages/HomePage.js';
+ import ErrorPage from './pages/ErrorPage.jsx';
 // import SearchPage from './pages/SearchPage.tsx';
 // import Results from './pages/Results.jsx';
  import LoginPage from './pages/LoginPage.js';
