@@ -1,6 +1,6 @@
 import sequelize from '../config/connection.js';
 import { DataTypes, Model, Optional } from 'sequelize';
-//import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt';
 
 interface UserAttributes {
   userid: number;
@@ -26,11 +26,11 @@ export default class User extends Model<UserAttributes, UserCreationAttributes> 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
 
-  // Hash the password before saving the user
-  // public async setPassword(password: string) {
-  //   const saltRounds = 10;
-  //   this.password = await bcrypt.hash(password, saltRounds);
-  // }
+  //Hash the password before saving the user
+  public async setPassword(password: string) {
+    const saltRounds = 10;
+    this.password = await bcrypt.hash(password, saltRounds);
+  }
 }
 
 //export function UserFactory(sequelize: Sequelize): typeof User {
@@ -69,17 +69,16 @@ export default class User extends Model<UserAttributes, UserCreationAttributes> 
     {
       tableName: 'users',
       sequelize,
-      // hooks: {
-      //   beforeCreate: async (user: User) => {
-      //     await user.setPassword(user.password);
-      //   },
-      //   beforeUpdate: async (user: User) => {
-      //     await user.setPassword(user.password);
-      //   },
-      // }
+      hooks: {
+        beforeCreate: async (user: User) => {
+          await user.setPassword(user.password);
+        },
+        beforeUpdate: async (user: User) => {
+          await user.setPassword(user.password);
+        },
+      }
     }
   );
 
-//   return User;
-// }
+
 

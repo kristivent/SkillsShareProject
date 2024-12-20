@@ -1,61 +1,7 @@
-// import  { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-
-// const Login = () => {
-//     const [username, setUsername] = useState('');
-//     const [password, setPassword] = useState('');
-//     const navigate = useNavigate();
-
-//     const handleLogin = () => {
-//         // Add your login logic here
-//         console.log('Logging in with', username, password);
-//     };
-
-//     const navigateToCreateAccount = () => {
-//         navigate('/create-account');
-//     };
-
-//     return (
-//         <div style={{ textAlign: 'center', marginTop: '50px' }}>
-//             <h1>Skill Sprout</h1>
-//             <div style={{ margin: '20px' }}>
-//                 <input
-//                     type="text"
-//                     placeholder="Username"
-//                     value={username}
-//                     onChange={(e) => setUsername(e.target.value)}
-//                     style={{ padding: '10px', width: '200px', marginBottom: '10px' }}
-//                 />
-//             </div>
-//             <div style={{ margin: '20px' }}>
-//                 <input
-//                     type="password"
-//                     placeholder="Password"
-//                     value={password}
-//                     onChange={(e) => setPassword(e.target.value)}
-//                     style={{ padding: '10px', width: '200px', marginBottom: '10px' }}
-//                 />
-//             </div>
-//             <div style={{ margin: '20px' }}>
-//                 <button onClick={handleLogin} style={{ padding: '10px 20px' }}>
-//                     Login
-//                 </button>
-//             </div>
-//             <div style={{ margin: '20px' }}>
-//                 <button onClick={navigateToCreateAccount} style={{ padding: '10px 20px' }}>
-//                     Create an Account
-//                 </button>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default Login;
-
 import { useState, FormEvent, ChangeEvent } from "react";
 
 import Auth from '../utils/auth';
-import { login } from "../api/authAPI";
+import { login } from "../api/authapi";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({
@@ -63,8 +9,12 @@ const Login = () => {
     password: ''
   });
 
+  const [error, setError] = useState<string | null>(null); // State for error messages
+
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    console.log(e.target);
     setLoginData({
       ...loginData,
       [name]: value
@@ -73,11 +23,22 @@ const Login = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
     try {
       const data = await login(loginData);
       Auth.login(data.token);
     } catch (err) {
-      console.error('Failed to login', err);
+      if (err) {
+        setError(err); // Display error from API response
+        console.error('Failed to login all error', err);
+        setError('Username or password is incorrect. Please try again.');
+      } else {
+        setError('An unexpected error occurred. Please try again.');
+        //console.error('Failed to l mesage', err.response.data.message);
+        console.log('Failed to login else error', err);
+      
+      }
+      console.error('Failed to login outer loop', err);
     }
   };
 
@@ -100,6 +61,7 @@ const Login = () => {
           onChange={handleChange}
         />
         <button type='submit'>Submit Form</button>
+        {error && <p style={{ color: 'black' }}>{error}</p>} {/* Display error message */}
       </form>
     </div>
     
