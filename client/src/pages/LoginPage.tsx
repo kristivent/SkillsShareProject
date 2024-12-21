@@ -8,9 +8,7 @@ const Login = () => {
     username: '',
     password: ''
   });
-
   const [error, setError] = useState<string | null>(null); // State for error messages
-
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
