@@ -1,27 +1,35 @@
-import React, { useState } from 'react';
+import { useState,  FormEvent, ChangeEvent } from 'react';
+import Userdata from '../interfaces/CreateAccount';
+
+import { useNavigate } from 'react-router-dom';
+import { createUser } from '../api/createuser'
 
 const CreateAccount = () => {
-    const [formData, setFormData] = useState({
+const [newUser, setnewUser] = useState<Userdata |undefined>({
         username: '',
         password: '',
         email: '',
-        githubUsername: '',
-        githubPassword: ''
     });
+    const navigate = useNavigate();
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
-
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
-        // Handle form submission logic here
-        console.log(formData);
-    };
+        if (newUser){
+          const data = await createUser(newUser);
+          console.log(data);
+          navigate('/');
+        }
+      }
+
+    //   const handleTextAreaChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    //     const { name, value } = e.target;
+    //     setnewUser((prev) => (prev ? { ...prev, [name]: value } : undefined));
+    //   };
+    
+      const handleTextChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const { name, value } = e.target;
+        setnewUser((prev) => (prev ? { ...prev, [name]: value } : undefined));
+      }
 
     return (
         <div>
@@ -32,8 +40,8 @@ const CreateAccount = () => {
                     <input
                         type="text"
                         name="username"
-                        value={formData.username}
-                        onChange={handleChange}
+                        value={newUser?.username || ''}
+                        onChange={handleTextChange}
                         required
                     />
                 </div>
@@ -42,8 +50,8 @@ const CreateAccount = () => {
                     <input
                         type="password"
                         name="password"
-                        value={formData.password}
-                        onChange={handleChange}
+                        value={newUser?.password|| ''}
+                        onChange={handleTextChange}
                         required
                     />
                 </div>
@@ -52,27 +60,9 @@ const CreateAccount = () => {
                     <input
                         type="email"
                         name="email"
-                        value={formData.email}
-                        onChange={handleChange}
+                        value={newUser?.email|| ''}
+                        onChange={handleTextChange}
                         required
-                    />
-                </div>
-                <div>
-                    <label>GitHub Username (optional):</label>
-                    <input
-                        type="text"
-                        name="githubUsername"
-                        value={formData.githubUsername}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label>GitHub Password (optional):</label>
-                    <input
-                        type="password"
-                        name="githubPassword"
-                        value={formData.githubPassword}
-                        onChange={handleChange}
                     />
                 </div>
                 <button type="submit">Create Account</button>

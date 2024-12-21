@@ -8,7 +8,7 @@ import App from './App.tsx'
  import HomePage from './pages/HomePage.js';
  import ErrorPage from './pages/ErrorPage.jsx';
 // import SearchPage from './pages/SearchPage.tsx';
-// import Results from './pages/Results.jsx';
+ import Results from './pages/Results.jsx';
  import LoginPage from './pages/LoginPage.js';
 import CreateAccount from './pages/CreateAccount.tsx';
 
@@ -35,10 +35,10 @@ const router = createBrowserRouter([
         path: '/login',
         element: <LoginPage />
       },
-    //   {
-    //     path: '/results',
-    //     element: <Results />
-    //   },
+      {
+        path: '/results',
+        element: <Results />
+      },
      ]
   }
 ]);

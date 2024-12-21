@@ -1,8 +1,8 @@
-interface CreateAccount {
+interface Userdata {
     username: string;
     email: string;
     password: string;
-    confirmPassword: string;
+    // confirmPassword: string;
 }
 
-export default CreateAccount;
+export default Userdata;
