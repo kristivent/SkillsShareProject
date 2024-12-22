@@ -1,4 +1,4 @@
-//import { seedUsers } from './users-seeds.js';
+// import { seedUsers } from './users-seeds.js';
 import sequelize from '../config/connection.js'
 import { seedUsers1 } from './skills-seeds.js'
 import {seedskill } from './skills-seeds.js'
@@ -9,8 +9,12 @@ const seedAll = async (): Promise<void> => {
     await sequelize.sync({ force: true });
     console.log('\n----- DATABASE SYNCED -----\n');
     
+    //  await seedUsers();
+    //  console.log('\n----- USERS SEEDED -----\n');
+
     await seedUsers1();
     console.log('\n----- USERS SEEDED -----\n');
+    
 
     await seedskill();
     console.log('\n----- Skill SEEDED -----\n');

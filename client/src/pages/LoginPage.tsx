@@ -10,6 +10,10 @@ const Login = () => {
   });
   const [error, setError] = useState<string | null>(null); // State for error messages
 
+  const createAccount = () => {
+    window.location.href = '/CreateAccount';
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     console.log(e.target);
@@ -58,7 +62,8 @@ const Login = () => {
           value={loginData.password || ''}
           onChange={handleChange}
         />
-        <button type='submit'>Submit Form</button>
+        <button type='submit'>Sign in</button>
+        <button type='button' onClick={createAccount}>Create An Account  </button>
         {error && <p style={{ color: 'black' }}>{error}</p>} {/* Display error message */}
       </form>
     </div>

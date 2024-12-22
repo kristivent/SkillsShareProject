@@ -11,7 +11,7 @@ export const seedUsers1 = async () => {
     { username: 'Allie', password: 'password' , email: 'Allie@email.com',github:'SR-Akash',city:'old heights',skillbuddy:true},
     { username: 'Anna', password: 'password' , email: 'Anna@email.com',github:'donlemefo',city:'Monroe',skillbuddy:true},
     { username: 'Riyan', password: 'password' , email: 'Riyan@email.com',github:'Effnote',city:'Hightstown',skillbuddy:true},
-  ]);
+  ], { individualHooks: true });
 };
 
 
