@@ -2,7 +2,9 @@ import { useState,  FormEvent, ChangeEvent } from 'react';
 import Userdata from '../interfaces/CreateAccount';
 
 import { useNavigate } from 'react-router-dom';
-import { createUser } from '../api/createuser'
+import { createUser } from '../api/createuser';
+
+import '../assets/styles/CreateAcc.css';
 
 const CreateAccount = () => {
 const [newUser, setnewUser] = useState<Userdata |undefined>({
@@ -32,7 +34,7 @@ const [newUser, setnewUser] = useState<Userdata |undefined>({
       }
 
     return (
-        <div>
+        <div className="create-account">
             <h2>Create Account</h2>
             <form onSubmit={handleSubmit}>
                 <div>

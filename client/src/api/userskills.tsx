@@ -2,6 +2,7 @@ import Auth from '../utils/auth';
 
 type UserSkill = {
   userId: number;
+  userName: string;
   email: string;
   githubusername: string;
   skillLevel: string;
