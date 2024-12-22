@@ -42,6 +42,7 @@ export const getSkillDetails = async (req: Request, res: Response) => {
     const response = skillMapUser.map((skillMap) => {
       const user = userdata.find(u => u.userid === skillMap.userid);
       return {
+        userName: user?.username,
         userId: skillMap.userid,
         skillLevel: skillMap.skilllevel,
         email: user?.email,

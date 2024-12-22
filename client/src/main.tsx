@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // Styles
 import './index.css'
 import './assets/styles/navbar.css'
+import './assets/styles/search.css'
 
 import App from './App.tsx'
  import HomePage from './pages/HomePage.js';
