@@ -1,6 +1,3 @@
-// we may not need this file, 
-
-//import { ApiMessage } from '../interfaces/ApiMessage'; // If needed
 import Auth from '../utils/auth'; 
 console.log('Auth.getToken():', Auth.getToken());
 
