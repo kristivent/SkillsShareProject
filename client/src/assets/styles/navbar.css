@@ -17,6 +17,9 @@ main {
     display: flex;
     margin-left: auto;
     flex-direction: row;
+    list-style: none; /* **Add this to remove bullets from the list** */
+    padding: 0; 
+    
   }
   
   .nav-title {
@@ -28,7 +31,7 @@ main {
   }
   
   .nav-title a {
-    color: #c46486;
+    color: #5cb85c;
     font-size: 3rem;
     text-align: center;
     padding-left: 15rem;
@@ -39,7 +42,11 @@ main {
     display: block;
     margin-left: auto;
     list-style: none;
-    margin: 3px;
+    padding: 0 1emm;
+
+    background-color: #b3f5b3;
+    padding: 10px;
+    border-radius: 5px;
     /* background-color: #c46486; */
   }
   
@@ -51,3 +58,22 @@ main {
   .active {
     font-weight: 700;
   }
+.nav-button{
+  background-color: #b3f5b3;
+  color: #000;
+  border: none;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  text-decoration: none; /* Prevent underlines */
+  border-radius: 5px;
+  display: inline-block;
+}
+.nav-button a {
+  color: #000; /* Ensure link inherits button color */
+  text-decoration: none; /* Prevent underline on links */
+}
+
+.nav-button:hover {
+  background-color: #a3e5a3; /* Add hover effect */
+}
