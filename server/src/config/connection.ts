@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
-
+// This is used to read the .env file and set the environment variables
+// connects to the database
 import { Sequelize } from 'sequelize';
 
 const sequelize = process.env.DB_URL

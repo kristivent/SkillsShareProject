@@ -13,14 +13,12 @@ export const login = async (req: Request, res: Response) => {
   if (!user) {
     console.log('User not found');
     return res.status(401).json({ message: 'Username is invalid' });
-       
   }
 
   const passwordIsValid = await bcrypt.compare(password, user.password);
   if (!passwordIsValid) {
     console.error('Password is incorrect');
     return res.status(401).json({ message: 'Password is invalid!!' });
-    
   }
 
   const secretKey = process.env.JWT_SECRET_KEY || '';
@@ -32,20 +30,20 @@ export const login = async (req: Request, res: Response) => {
 
 // POST /Users
 export const createUser = async (req: Request, res: Response) => {
-  const { username, password,email } = req.body;
+  const { username, password, email } = req.body;
   try {
-    const newUser = await User.create({ username, password,email});
+    const newUser = await User.create({ username, password, email });
     console.log(newUser);
     const secretKey = process.env.JWT_SECRET_KEY || '';
 
     const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
     console.log('Token', token);
-    return res.status(201).json({ 
+    return res.status(201).json({
       newUser,
       token,
     });
 
-    } catch (error: any) {
+  } catch (error: any) {
     return res.status(400).json({ message: error.message });
   }
 
