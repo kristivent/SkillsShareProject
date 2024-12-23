@@ -1,5 +1,4 @@
 import Auth from '../utils/auth'; 
-console.log('Auth.getToken():', Auth.getToken());
 
 // This function fetches data from your API and returns the Google Books data
 const searchGoogleBooks = async (subject: string) => {

@@ -12,7 +12,7 @@ class AuthService {
     const token = this.getToken();
     return !!token && !this.isTokenExpired(token);
   }
-  
+
   isTokenExpired(token: string) {
     try {
       // Attempt to decode the provided token using jwtDecode, expecting a JwtPayload type.

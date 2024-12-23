@@ -14,7 +14,8 @@ app.use(express.static('../client/dist'));
 app.use(express.json());
 app.use(routes);
 
-sequelize.sync({force: false}).then(() => {
+// Syncs the database and starts the server. Force is set to false to prevent the database from being overwritten
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => {
     console.log('Database synced');
     console.log(`Server is listening on port ${PORT}`);
