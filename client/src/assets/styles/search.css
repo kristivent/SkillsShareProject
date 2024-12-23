@@ -15,6 +15,12 @@ body {
     z-index: 1000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
+
+  .search-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+  }
   
   .search {
     padding: 8px 12px;
@@ -23,13 +29,12 @@ body {
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-right: 10px;
-    margin-left: 4rem;;
   }
   
   .search-button {
     padding: 8px 16px;
     font-size: 16px;
-    background-color: #007bff;
+    background-color: #4CAF50;
     color: white;
     border: none;
     border-radius: 4px;
@@ -37,11 +42,13 @@ body {
   }
   
   .search-button:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
   }
   
   main {
     padding: 20px;
     text-align: center;
   }
+
+
   
