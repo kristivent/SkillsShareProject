@@ -48,6 +48,7 @@ button {
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
+  text-align: center; /* Center the text in the button */
 }
 
 button:hover {
