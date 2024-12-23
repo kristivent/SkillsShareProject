@@ -50,6 +50,7 @@ function HomePage() {
   return (
     <div>
       <header className="search-header">
+        <div className="search-container">
         <input
           type="text"
           className="search"
@@ -60,6 +61,7 @@ function HomePage() {
         <button className="search-button" onClick={handleSubmit}>
           Search
         </button>
+        </div>
       </header>
       <main>
         <p>Search for skills, GitHub profiles, and books!</p>
