@@ -6,7 +6,7 @@ import SkillMap from './skillmap.js';
 
 
 User.belongsToMany(Skill, { foreignKey: 'userid' ,through: SkillMap});
- Skill.belongsToMany(User, { foreignKey: 'skillid', through: SkillMap});
+Skill.belongsToMany(User, { foreignKey: 'skillid', through: SkillMap});
 
 
- export { User, Skill, SkillMap };
+export { User, Skill, SkillMap };

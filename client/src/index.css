@@ -1,11 +1,11 @@
 
 body {
-  background: linear-gradient(
+  /* background: linear-gradient(
     180deg,
     #9CC5A1 0%,
     #49A078 35%,
     #216869 100%
-  );
+  ); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

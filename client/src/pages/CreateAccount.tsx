@@ -3,6 +3,7 @@ import Userdata from '../interfaces/CreateAccount';
 
 import { useNavigate } from 'react-router-dom';
 import { createUser } from '../api/createuser';
+import Auth from '../utils/auth';
 
 import '../assets/styles/CreateAcc.css';
 
@@ -19,7 +20,8 @@ const [newUser, setnewUser] = useState<Userdata |undefined>({
         if (newUser){
           const data = await createUser(newUser);
           console.log(data);
-          navigate('/');
+          Auth.login(data.token);
+          navigate('/search');
         }
       }
 

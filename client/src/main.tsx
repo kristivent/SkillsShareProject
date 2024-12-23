@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider,Navigate } from 'react-router-dom'
 // Styles
 import './index.css'
 import './assets/styles/navbar.css'
@@ -8,10 +8,10 @@ import './assets/styles/search.css'
 import App from './App.tsx'
  import HomePage from './pages/HomePage.js';
  import ErrorPage from './pages/ErrorPage.jsx';
-// import SearchPage from './pages/SearchPage.tsx';
  import Results from './pages/Results.jsx';
  import LoginPage from './pages/LoginPage.js';
 import CreateAccount from './pages/CreateAccount.tsx';
+import auth from './utils/auth';
 
 
 const router = createBrowserRouter([
@@ -22,7 +22,8 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-         element: <HomePage />
+        element: auth.loggedIn() ? <HomePage /> : <Navigate to="/login" replace />,
+        //  element: <HomePage />
       }, 
       {
         path: '/CreateAccount',
