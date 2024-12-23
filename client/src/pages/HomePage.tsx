@@ -31,6 +31,7 @@ function HomePage() {
     const gitHubData = await searchgitHub(firstSkill.githubusername);
 
     const combinedData = {
+      search: searchTerm,
       name: firstSkill.userName,
       email: firstSkill.email,
       expertiseLevel: firstSkill.skillLevel,
