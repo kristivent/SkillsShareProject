@@ -1,70 +1,71 @@
-/* Login.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    flex-direction: column;
+.login-container,
+.create-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../images/ai-generated-8403513.jpg");
+  background-size: 100%;
+  background-position-x: right 32px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding-top: 5rem;
+  padding-bottom: 10rem;
 }
 
-.title {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin: 10px 20px;
+  color: #044e21;
+}
+.create-account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 
-.login-container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.login-container h2 {
-    margin-bottom: 20px;
-    color: #333;
+.createacc,
+.lsignin,
+.lcreateaccount {
+  width: 70%;
+  padding: 10px;
+  margin-left: 5rem;
+  background-color: #5cb85c;
+  /* background-color: #4A8FE7; */
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center; /* Center the text in the button */
 }
 
-.login-container input[type="text"],
-.login-container input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+button:hover {
+  background-color: #8be88b;
+  color: black;
 }
 
-.login-container button {
-    width: 100%;
-    padding: 10px;
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.login-container button:hover {
-    background-color: #4cae4c;
-}
-
-.login-container a {
-    display: block;
-    margin-top: 20px;
-    color: #5cb85c;
-    text-decoration: none;
-}
-
-.login-container a:hover {
-    text-decoration: underline;
+.loginerror {
+  color: #067432;
+  margin: 20px 10px;
+  text-align: center;
 }

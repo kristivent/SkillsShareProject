@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { createUser } from "../api/createuser";
 import Auth from "../utils/auth";
 
-import "../assets/styles/CreateAcc.css";
+
 
 const CreateAccount = () => {
   const [newUser, setnewUser] = useState<Userdata | undefined>({
@@ -34,8 +34,8 @@ const CreateAccount = () => {
 
   return (
     <div className="create-account">
-      <h2>Create Account</h2>
-      <form onSubmit={handleSubmit}>
+      {/* <h2>Create Account</h2> */}
+      <form onSubmit={handleSubmit} className="form">
         <div>
           <label>Username:</label>
           <input
@@ -66,7 +66,9 @@ const CreateAccount = () => {
             required
           />
         </div>
-        <button type="submit">Create Account</button>
+        <button type="submit" className="createacc">
+          Create Account
+        </button>
       </form>
     </div>
   );

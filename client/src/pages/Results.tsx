@@ -12,13 +12,19 @@ interface Book {
       thumbnail?: string;
     };
   };
+  accessInfo?: {
+    pdf?: {
+      acsTokenLink?: string;
+    };
+  };
 }
-
 interface GitHubData {
-  gitHubUsername: string;
+  login: string;
+  html_url: string;
   gitHubRepository: number;
   gitHubProfile: string;
   avatar_url: string;
+  repos_url: string;
 }
 
 interface CombinedData {
@@ -27,7 +33,7 @@ interface CombinedData {
   email: string;
   expertiseLevel: string;
   books: Book[];
-  gitHubData: GitHubData;
+  gitHubData: GitHubData | null;
 }
 
 function ResultsPage() {
@@ -44,35 +50,49 @@ function ResultsPage() {
         <div className="card">
           <div className="skill-buddy">
             <h3>Skill Buddy</h3>
-            <p>Name: {data.name}</p>
-            <p>Email: {data.email}</p>
-            <p>Expertise Level: {data.expertiseLevel}</p>
-            <p>
-              GitHub Username:{" "}
-              <a href={data.gitHubData.gitHubProfile}>
-                {data.gitHubData.gitHubUsername}
-              </a>
-            </p>
-            <p>Repositories: {data.gitHubData.gitHubRepository}</p>
+            {data.name && data.email && data.expertiseLevel ? (
+              <>
+                <p>Name: {data.name}</p>
+                <p>Email: {data.email}</p>
+                <p>Expertise Level: {data.expertiseLevel}</p>
+                {data.gitHubData && (
+                  <p>
+                    GitHub Username:{" "}
+                    <a href={data.gitHubData.html_url}>
+                      {data.gitHubData.login}
+                    </a>
+                  </p>
+                )}
+              </>
+            ) : (
+              <p>
+                No skill buddy currently available. Please check the reference
+                books below.
+              </p>
+            )}
           </div>
 
-          <div className="gitimage">
-            <img
-              src={data.gitHubData.avatar_url}
-              alt="GitHub Profile Pic"
-              className="profile-pic"
-            />
-          </div>
+          {data.gitHubData?.avatar_url && (
+            <div className="gitimage">
+              <img
+                src={data.gitHubData.avatar_url}
+                alt="GitHub Profile Pic"
+                className="profile-pic"
+              />
+            </div>
+          )}
         </div>
 
         <div className="books-section">
-          <button onClick={() => setShowBooks(!showBooks)}>
+          <button
+            onClick={() => setShowBooks(!showBooks)}
+            className="books-button"
+          >
             {showBooks ? "Hide Reference Books" : "Show Reference Books"}
           </button>
 
           {showBooks && (
             <div className="books-container">
-              {/* <h2>Reference Books:</h2> */}
               {data.books && data.books.length > 0 ? (
                 data.books.map((book) => (
                   <div key={book.id} className="book-card">
@@ -83,6 +103,17 @@ function ResultsPage() {
                       )}
                       {book.volumeInfo.publisher && (
                         <p>Publisher: {book.volumeInfo.publisher}</p>
+                      )}
+                      {book.accessInfo?.pdf?.acsTokenLink && (
+                        <div className="book-pdf-link">
+                          <a
+                            href={book.accessInfo.pdf.acsTokenLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View PDF
+                          </a>
+                        </div>
                       )}
                     </div>
                     {book.volumeInfo.imageLinks?.thumbnail && (

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { User } from '../models/index.js'; 
+import { User } from '../models/index.js';
 import Skill from '../models/skills.js';
 import SkillMap from '../models/skillmap.js';
 
@@ -33,11 +33,9 @@ export const getSkillDetails = async (req: Request, res: Response) => {
       return res.status(404).json({ message: 'Skill Map is not able to available' });
     }
 
-    console.log(skillMapUser);
-
     const userIds = skillMapUser.map(skillMap => skillMap.userid);
     const userdata = await User.findAll({
-       where: { userid: userIds },
+      where: { userid: userIds },
     });
 
 
