@@ -1,17 +1,17 @@
 # SkillsSprout
 Skills Sprouts is a web-based application that connects users with curated reference materials and relevant GitHub profiles based on their search queries. It leverages the power of Google Books API and GitHub API to provide a rich and interactive platform for discovering skills and associated resources.
-Features
+**Features**
 Search for Skills and Resources: Input a keyword to search for books and user profiles related to a specific skill.
 Reference Books Integration: Utilizes the Google Books API to fetch books matching the search criteria, complete with detailed metadata.
 Skill Buddy Matching: Identifies users with expertise in the searched skill and displays their contact information and skill level.
 GitHub Profile Exploration: Fetches and displays relevant GitHub user information and repositories for skill buddies.
 Responsive Design: Optimized for seamless use across desktop and mobile devices
 
-Frontend: React, TypeScript, CSS
-Backend: Node.js, Sequelize ORM (for database interaction)
-APIs Used: Google Books API,GitHub API
-Authentication: JSON Web Tokens (JWT)
-Database: PostgreSQL
+**Frontend**: React, TypeScript, CSS
+**Backend**: Node.js, Sequelize ORM (for database interaction)
+**APIs Used:** Google Books API,GitHub API
+**Authentication**: JSON Web Tokens (JWT)
+**Database:** PostgreSQL
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -61,7 +61,8 @@ npm run start:dev
 
 ## Screenshots
 The following image demonstrates the web application's appearance:
-![Login Page](../SkillsShareProject/client/src/assets/images/screenshots/login.png)
+![Login Page](../SkillsShareProject/client/src/assets/images/screenshots
+/createaccount.png)
 ![Create Account Page](../SkillsShareProject/client/src/assets/images/screenshots/createaccount.png)
 ![Home Page](../SkillsShareProject/client/src/assets/images/screenshots/homepage.png)
 ![Results Page](../SkillsShareProject/client/src/assets/images/screenshots/resultspage.png)
