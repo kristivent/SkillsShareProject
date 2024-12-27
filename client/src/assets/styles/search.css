@@ -1,53 +1,58 @@
-/* HomePage.css */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+.search-container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  background-color: #f4f4f4;
+
+  background-image: url("../images/plant-8130367_1280.jpg");
+  opacity: 0.9;
+  background-size: 100%;
+
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding-top: 10rem;
+  padding-bottom: 2rem;
 }
-  
-  .search-header {
-    background-color: #f8f9fa;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .search {
-    padding: 8px 12px;
-    font-size: 16px;
-    width: 300px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
-  
-  .search-button {
-    padding: 8px 16px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .search-button:hover {
-    background-color: #45a049;
-  }
-  
-  main {
+
+.search-container .search {
+  padding: 8px 12px;
+  font-size: 16px;
+  width: 77%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+  margin-bottom: 1rem;
+  display: flex;
+}
+
+.search-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #095e0c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 40%;
+}
+
+.search-button:hover {
+  background-color: #45a049;
+}
+.textme {
+  color: #095e0c;
+  font-size: 20px;
+  margin-top: 1rem;
+  padding-left: 2rem;
+}
+/* main {
     padding: 20px;
     text-align: center;
-  }
+  } */
 
-
-  
+.error-message {
+  margin-top: 3rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #095e0c;
+  font-size: 1.3rem;
+}

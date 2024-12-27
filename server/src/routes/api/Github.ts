@@ -4,19 +4,16 @@ import { Request, Response } from 'express';
 
 export const githubuserapi = async (req: Request, res: Response) => {
   const { username } = req.params;
-  console.log('username:', username);
+
   if (!username) {
     return res.status(400).json({ message: 'username is required' });
   }
   try {
-    console.log('GitHUb API Key:', process.env.GIT_HUB_API_KEY);
-    console.log('username:', username);
     const response = await fetch(`https://api.github.com/users/${username}`, {
       headers: {
         Authorization: `token ${process.env.GIT_HUB_API_KEY}`,
       },
     });
-    console.log('response:', response);
     const data = await response.json();
     if (!response.ok) {
       console.error('GIT API Error:', await response.text());

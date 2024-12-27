@@ -3,6 +3,8 @@ import { useState, FormEvent, ChangeEvent } from "react";
 import Auth from "../utils/auth";
 import { login } from "../api/authapi";
 
+import "../assets/styles/Login.css";
+
 const Login = () => {
   const [loginData, setLoginData] = useState({
     username: "",
@@ -42,13 +44,17 @@ const Login = () => {
         console.log("Failed to login else error", err);
       }
       console.error("Failed to login outer loop", err);
+      setLoginData({
+        username: "",
+        password: "",
+      });
     }
   };
 
   return (
-    <div className="container">
+    <div className="login-container">
       <form className="form" onSubmit={handleSubmit}>
-        <h1>Sign In</h1>
+        {/* <h1>Sign In</h1> */}
         <label>Username</label>
         <input
           type="text"
@@ -63,11 +69,17 @@ const Login = () => {
           value={loginData.password || ""}
           onChange={handleChange}
         />
-        <button type="submit">Sign in</button>
-        <button type="button" onClick={createAccount}>
+        <button type="submit" className="lsignin">
+          Sign in
+        </button>
+        <button
+          type="button"
+          onClick={createAccount}
+          className="lcreateaccount"
+        >
           Create An Account{" "}
         </button>
-        {error && <p style={{ color: "black" }}>{error}</p>}{" "}
+        {error && <p className="loginerror">{error}</p>}{" "}
         {/* Display error message */}
       </form>
     </div>

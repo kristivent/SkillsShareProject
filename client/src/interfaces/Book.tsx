@@ -1,8 +1,16 @@
 export interface Book {
-
-    title: string;
-
-    authors: string[];
-
-    infoLink: string;
-}
+    id: string;
+    volumeInfo: {
+      title: string;
+      authors?: string[];
+      publisher?: string;
+      imageLinks?: {
+        thumbnail?: string;
+      };
+    };
+    accessInfo?: {
+      pdf?: {
+        acsTokenLink?: string;
+      };
+    };
+  }

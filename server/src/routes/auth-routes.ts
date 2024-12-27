@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 
 export const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;
-  console.log('Username', username);
+
   const user = await User.findOne({
     where: { username },
   });
@@ -33,11 +33,11 @@ export const createUser = async (req: Request, res: Response) => {
   const { username, password, email } = req.body;
   try {
     const newUser = await User.create({ username, password, email });
-    console.log(newUser);
+  
     const secretKey = process.env.JWT_SECRET_KEY || '';
 
     const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
-    console.log('Token', token);
+  
     return res.status(201).json({
       newUser,
       token,
@@ -48,7 +48,7 @@ export const createUser = async (req: Request, res: Response) => {
   }
 
 };
-console.log('User in auth file:', User);
+
 const router = Router();
 
 router.post('/login', login);
