@@ -62,13 +62,13 @@ npm run start:dev
 ## Screenshots
 The following image demonstrates the web application's appearance:
 
-![Login Page](../SkillsShareProject/client/src/assets/images/screenshots/login.png)
+![Login Page](./client/src/assets/images/screenshots/login.png)
 
-![Create Account Page](../SkillsShareProject/client/src/assets/images/screenshots/createaccount.png)
+![Create Account Page](./client/src/assets/images/screenshots/createaccount.png)
 
-![Home Page](../SkillsShareProject/client/src/assets/images/screenshots/homepage.png)
+![Home Page](./client/src/assets/images/screenshots/homepage.png)
 
-![Results Page](../SkillsShareProject/client/src/assets/images/screenshots/resultspage.png)
+![Results Page](./client/src/assets/images/screenshots/resultspage.png)
 
 ## License 
 This project is licensed under the [MIT license](https://opensource.org/licenses/MIT).
